@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final _listBoxDecoration = BoxDecoration(
   boxShadow: [
@@ -44,7 +45,7 @@ class ItemListContainer extends StatelessWidget {
             const SizedBox(height: 10.0),
             Text(
               title,
-              style: const TextStyle(
+              style: GoogleFonts.comfortaa(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_list/api/api.client.dart';
 import 'package:shopping_list/models/item.model.dart';
 import 'package:shopping_list/utils/assets.util.dart';
@@ -145,7 +146,12 @@ class _HomePageState extends State<HomePage> {
             },
           ),
           button: AddItemButton(
-            label: const Text('Add new item'),
+            label: Text(
+              'Add new item',
+              style: GoogleFonts.comfortaa(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
             icon: const Icon(Icons.add),
             onPressed: addItem,
           ),

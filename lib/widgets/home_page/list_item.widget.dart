@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_list/api/api.client.dart';
-import 'package:shopping_list/models/item_attributes.model.dart';
 import 'package:shopping_list/utils/assets.util.dart';
 import 'package:shopping_list/widgets/modal.widget.dart';
 
-const _notBoughtStyle = TextStyle(
+final _notBoughtStyle = GoogleFonts.comfortaa(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
 );
 
-final _boughtStyle = TextStyle(
+final _boughtStyle = GoogleFonts.comfortaa(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
   color: Colors.grey[600],
