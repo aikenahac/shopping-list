@@ -12,7 +12,7 @@ final _boughtStyle = TextStyle(
   decoration: TextDecoration.lineThrough,
 );
 
-class ListItem extends StatelessWidget {
+class ListItem extends StatefulWidget {
   const ListItem({
     Key? key,
     required this.name,
@@ -21,6 +21,31 @@ class ListItem extends StatelessWidget {
 
   final String name;
   final bool bought;
+
+  @override
+  State<ListItem> createState() => _ListItemState();
+}
+
+class _ListItemState extends State<ListItem> {
+  bool _bought = false;
+
+  @override
+  void initState() {
+    setBought();
+    super.initState();
+  }
+
+  void updateBought(bool bought) {
+    setState(() {
+      _bought = bought;
+    });
+  }
+
+  void setBought() {
+    setState(() {
+      _bought = widget.bought;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +77,17 @@ class ListItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                name,
-                style: bought ? _boughtStyle : _notBoughtStyle,
+                widget.name,
+                style: _bought ? _boughtStyle : _notBoughtStyle,
               ),
               Checkbox(
-                value: bought,
-                onChanged: (value) {},
+                value: _bought,
+                onChanged: (bool? value) {
+                  print(value);
+                  setState(() {
+                    _bought = value!;
+                  });
+                },
               ),
             ],
           ),
