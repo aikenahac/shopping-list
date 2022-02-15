@@ -36,51 +36,62 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void deleteItem(int id) async {
+    await API.delete('/items/$id');
+
+    setState(() {
+      _items = _items.where((e) => e.id != id).toList();
+    });
+    Navigator.of(context).pop();
+    Navigator.of(context).pushNamed(HomePage.routeName);
+  }
+
+  void addItem() {}
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: AppAssets.primaryColor,
         width: width,
-        child: Stack(
-          children: [
-            ItemListContainer(
-              title: 'Shopping List',
-              list: ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: _items.length,
-                separatorBuilder: (context, index) => const SizedBox(height: 10),
-                itemBuilder: (context, i) {
-                  if (i == _items.length - 1) {
-                    return Column(
-                      children: [
-                        ListItem(
-                          id: _items[i].id,
-                          name: _items[i].attributes.name,
-                          bought: _items[i].attributes.bought,
-                        ),
-                        const SizedBox(height: 10.0),
-                      ],
-                    );
-                  }
-                  return ListItem(
-                    id: _items[i].id,
-                    name: _items[i].attributes.name,
-                    bought: _items[i].attributes.bought,
-                  );
-                },
-              ),
-              button: AddItemButton(
-                label: const Text('Add new item'),
-                icon: const Icon(Icons.add),
-                onPressed: () {
-                  // TODO: Add new item
-                },
-              ),
-            ),
-          ],
+        child: ItemListContainer(
+          title: 'Shopping List',
+          list: ListView.separated(
+            physics: const BouncingScrollPhysics(),
+            itemCount: _items.length,
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemBuilder: (context, i) {
+              if (i == _items.length - 1) {
+                return Column(
+                  children: [
+                    ListItem(
+                      id: _items[i].id,
+                      name: _items[i].attributes.name,
+                      bought: _items[i].attributes.bought,
+                      deleteItem: () => deleteItem(_items[i].id),
+                    ),
+                    const SizedBox(height: 10.0),
+                  ],
+                );
+              }
+              return ListItem(
+                id: _items[i].id,
+                name: _items[i].attributes.name,
+                bought: _items[i].attributes.bought,
+                deleteItem: () => deleteItem(_items[i].id),
+              );
+            },
+          ),
+          button: AddItemButton(
+            label: const Text('Add new item'),
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              // TODO: Add new item
+            },
+          ),
         ),
       ),
     );
