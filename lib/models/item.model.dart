@@ -1,12 +1,16 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'item.model.g.dart';
+
+@JsonSerializable()
 class Item {
-  final int id;
-  final String name, image;
+  final String name;
   final bool bought;
 
   Item(
-    this.id,
     this.name,
-    this.image,
     this.bought,
   );
+
+  factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
 }

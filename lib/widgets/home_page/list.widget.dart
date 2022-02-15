@@ -39,6 +39,7 @@ class ItemListContainer extends StatelessWidget {
         width: width,
         height: height * 0.8,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const SizedBox(height: 10.0),
             Text(
