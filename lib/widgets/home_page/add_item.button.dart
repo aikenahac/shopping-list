@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_list/utils/assets.util.dart';
 
+// Customized button specifically made for the adding of a new item
 class AddItemButton extends StatelessWidget {
   const AddItemButton({
     Key? key,

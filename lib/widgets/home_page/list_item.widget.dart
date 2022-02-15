@@ -4,11 +4,15 @@ import 'package:shopping_list/api/api.client.dart';
 import 'package:shopping_list/utils/assets.util.dart';
 import 'package:shopping_list/widgets/modal.widget.dart';
 
+// Style for the items that are not bought
+// Plain black colored text
 final _notBoughtStyle = GoogleFonts.comfortaa(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
 );
 
+// Style for the items that are bought
+// Grayed out and line through text
 final _boughtStyle = GoogleFonts.comfortaa(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
@@ -16,6 +20,7 @@ final _boughtStyle = GoogleFonts.comfortaa(
   decoration: TextDecoration.lineThrough,
 );
 
+// Custom widget that shows the item name and the bought status
 class ListItem extends StatefulWidget {
   const ListItem({
     Key? key,
@@ -41,11 +46,13 @@ class _ListItemState extends State<ListItem> {
   String _name = '';
 
   @override
+  // Function that executes when the state is initialized
   void initState() {
     setData();
     super.initState();
   }
 
+  // Function that updates the status of the item
   void updateBought(bool bought) async {
     final Map<String, dynamic> updateItem = {
       'data': {'bought': bought}
@@ -65,6 +72,7 @@ class _ListItemState extends State<ListItem> {
     }
   }
 
+  // Function that updates the name of the item
   void updateName() async {
     final Map<String, dynamic> updateItem = {
       'data': {'name': _nameController.text}
@@ -84,6 +92,9 @@ class _ListItemState extends State<ListItem> {
     }
   }
 
+  // Function that sets the data of the item
+  // This function is called when the state is initialized
+  // The purpose is to sync the data with the server
   void setData() {
     setState(() {
       _name = widget.name;
@@ -92,6 +103,7 @@ class _ListItemState extends State<ListItem> {
     _nameController.text = _name;
   }
 
+  // Opens a dialog the allow the user to manage the item
   void openEdit() {
     showDialog(
       context: context,

@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'item_attributes.model.g.dart';
 
 @JsonSerializable()
+// Custom type for JSON serialization
 class ItemAttributes {
   final String name;
   final bool bought;

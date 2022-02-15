@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// Decoration for the list box
 final _listBoxDecoration = BoxDecoration(
   boxShadow: [
     BoxShadow(
@@ -16,6 +17,7 @@ final _listBoxDecoration = BoxDecoration(
   ),
 );
 
+// Custom widget that contains the list box
 class ItemListContainer extends StatelessWidget {
   const ItemListContainer({
     Key? key,

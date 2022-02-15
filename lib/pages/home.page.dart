@@ -9,6 +9,8 @@ import 'package:shopping_list/widgets/home_page/list.widget.dart';
 import 'package:shopping_list/widgets/home_page/list_item.widget.dart';
 import 'package:shopping_list/widgets/modal.widget.dart';
 
+// Most important class
+// This page is the main page of the app
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -24,11 +26,14 @@ class _HomePageState extends State<HomePage> {
   List<Item> _items = [];
 
   @override
+  // Function that executes when the state is initialized
   void initState() {
     getItems();
     super.initState();
   }
 
+  // Function that gets the items from the API
+  // Function executes when the state is loaded
   void getItems() async {
     final itemsJson = await API.get('/items');
 
@@ -41,6 +46,8 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Function that deletes an item
+  // Function executes when the user clicks on the delete button
   void deleteItem(int id) async {
     await API.delete('/items/$id');
 
@@ -48,6 +55,8 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pushNamed(HomePage.routeName);
   }
 
+  // Function that creates an item
+  // Function executes when the user clicks on the add button
   void createItem() async {
     final Map<String, dynamic> updateItem = {
       'data': {'name': _nameController.text}
@@ -66,6 +75,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // Opens a dialog the allow the user to create a new item
   void addItem() {
     showDialog(
       context: context,

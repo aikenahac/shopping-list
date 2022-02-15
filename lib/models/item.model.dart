@@ -4,6 +4,7 @@ import 'package:shopping_list/models/item_attributes.model.dart';
 part 'item.model.g.dart';
 
 @JsonSerializable()
+// Custom type for JSON serialization
 class Item {
   final int id;
   final ItemAttributes attributes;

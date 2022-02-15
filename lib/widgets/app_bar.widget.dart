@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_list/api/api.client.dart';
 
+// Custom app bar
 class SLAppBar extends StatefulWidget {
   const SLAppBar({Key? key}) : super(key: key);
 
@@ -13,11 +14,13 @@ class _SLAppBarState extends State<SLAppBar> {
   String _familyName = '';
 
   @override
+  // Function that executes when the state is initialized
   void initState() {
     _getFamilyName();
     super.initState();
   }
 
+  // Function that gets the family name from the API
   void _getFamilyName() async {
     final Map<String, dynamic> _info = await API.get('/family-name');
 

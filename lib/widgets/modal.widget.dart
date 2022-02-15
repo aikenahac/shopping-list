@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Customized popup dialog widget
 class Modal extends StatelessWidget {
   const Modal({
     Key? key,

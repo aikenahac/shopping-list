@@ -4,9 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:shopping_list/api/exceptions/bad_request.exception.dart';
 import 'package:shopping_list/api/exceptions/forbidden.exception.dart';
 
+// Class that holds all the network requests
 class API {
   static const String apiUrl = 'https://sl.aikenahac.com/api';
 
+  // GET function
+  // Retrieves JSON data from the API to the app
   static Future<Map<String, dynamic>> get(String endpoint) async {
     final url = Uri.parse(apiUrl + endpoint);
 
@@ -24,6 +27,9 @@ class API {
     return responseBody;
   }
 
+  // POST function
+  // Sends JSON data to the app from the API
+  // Used for adding new items
   static Future<Map<String, dynamic>> post(String endpoint, Map<String, dynamic> body) async {
     final url = Uri.parse(apiUrl + endpoint);
 
@@ -51,6 +57,9 @@ class API {
     return responseBody;
   }
 
+  // PUT function
+  // Sends JSON data to the app from the API
+  // Used for updating existing items
   static Future<Map<String, dynamic>> put(String endpoint, Map<String, dynamic> body) async {
     final url = Uri.parse(apiUrl + endpoint);
 
@@ -78,6 +87,8 @@ class API {
     return responseBody;
   }
 
+  // DELETE function
+  // Deletes an existing item from the app
   static Future<Map<String, dynamic>> delete(String endpoint) async {
     final url = Uri.parse(apiUrl + endpoint);
 
