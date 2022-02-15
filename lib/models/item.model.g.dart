@@ -7,11 +7,11 @@ part of 'item.model.dart';
 // **************************************************************************
 
 Item _$ItemFromJson(Map<String, dynamic> json) => Item(
-      json['name'] as String,
-      json['bought'] as bool,
+      json['id'] as int,
+      ItemAttributes.fromJson(json['attributes'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
-      'name': instance.name,
-      'bought': instance.bought,
+      'id': instance.id,
+      'attributes': instance.attributes,
     };

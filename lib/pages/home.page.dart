@@ -28,11 +28,11 @@ class _HomePageState extends State<HomePage> {
     final itemsJson = await API.get('/items');
 
     setState(() {
-      _items = List.from(itemsJson['data'])
-          .map(
-            (e) => Item.fromJson(e['attributes']),
-          )
-          .toList();
+      _items = List.from(itemsJson['data']).map(
+        (e) {
+          return Item.fromJson(e);
+        },
+      ).toList();
     });
   }
 
@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage> {
             ItemListContainer(
               title: 'Shopping List',
               list: ListView.separated(
+                physics: const BouncingScrollPhysics(),
                 itemCount: _items.length,
                 separatorBuilder: (context, index) => const SizedBox(height: 10),
                 itemBuilder: (context, i) {
@@ -56,16 +57,18 @@ class _HomePageState extends State<HomePage> {
                     return Column(
                       children: [
                         ListItem(
-                          name: _items[i].name,
-                          bought: _items[i].bought,
+                          id: _items[i].id,
+                          name: _items[i].attributes.name,
+                          bought: _items[i].attributes.bought,
                         ),
                         const SizedBox(height: 10.0),
                       ],
                     );
                   }
                   return ListItem(
-                    name: _items[i].name,
-                    bought: _items[i].bought,
+                    id: _items[i].id,
+                    name: _items[i].attributes.name,
+                    bought: _items[i].attributes.bought,
                   );
                 },
               ),
