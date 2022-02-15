@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         ListItem(
                           name: _items[i].name,
-                          checked: _items[i].bought,
+                          bought: _items[i].bought,
                         ),
                         const SizedBox(height: 10.0),
                       ],
@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                   }
                   return ListItem(
                     name: _items[i].name,
-                    checked: _items[i].bought,
+                    bought: _items[i].bought,
                   );
                 },
               ),

@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 
+const _notBoughtStyle = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w600,
+);
+
+final _boughtStyle = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w600,
+  color: Colors.grey[600],
+  decoration: TextDecoration.lineThrough,
+);
+
 class ListItem extends StatelessWidget {
   const ListItem({
     Key? key,
     required this.name,
-    required this.checked,
+    required this.bought,
   }) : super(key: key);
 
   final String name;
-  final bool checked;
+  final bool bought;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +53,10 @@ class ListItem extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: const TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: bought ? _boughtStyle : _notBoughtStyle,
               ),
               Checkbox(
-                value: checked,
+                value: bought,
                 onChanged: (value) {},
               ),
             ],

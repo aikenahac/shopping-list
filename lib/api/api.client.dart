@@ -21,8 +21,6 @@ class API {
 
     final Map<String, dynamic> responseBody = jsonDecode(response.body);
 
-    print(responseBody);
-
     return responseBody;
   }
 
