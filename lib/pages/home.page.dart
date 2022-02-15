@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shopping_list/api/api.client.dart';
 import 'package:shopping_list/models/item.model.dart';
 import 'package:shopping_list/utils/assets.util.dart';
+import 'package:shopping_list/widgets/app_bar.widget.dart';
 import 'package:shopping_list/widgets/home_page/add_item.button.dart';
 import 'package:shopping_list/widgets/home_page/list.widget.dart';
 import 'package:shopping_list/widgets/home_page/list_item.widget.dart';
@@ -117,44 +118,50 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         color: AppAssets.primaryColor,
         width: width,
-        child: ItemListContainer(
-          title: 'Shopping List',
-          list: ListView.separated(
-            physics: const BouncingScrollPhysics(),
-            itemCount: _items.length,
-            separatorBuilder: (context, index) => const SizedBox(height: 10),
-            itemBuilder: (context, i) {
-              if (i == _items.length - 1) {
-                return Column(
-                  children: [
-                    ListItem(
-                      id: _items[i].id,
-                      name: _items[i].attributes.name,
-                      bought: _items[i].attributes.bought,
-                      deleteItem: () => deleteItem(_items[i].id),
-                    ),
-                    const SizedBox(height: 10.0),
-                  ],
-                );
-              }
-              return ListItem(
-                id: _items[i].id,
-                name: _items[i].attributes.name,
-                bought: _items[i].attributes.bought,
-                deleteItem: () => deleteItem(_items[i].id),
-              );
-            },
-          ),
-          button: AddItemButton(
-            label: Text(
-              'Add new item',
-              style: GoogleFonts.comfortaa(
-                fontWeight: FontWeight.w600,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const SLAppBar(),
+            ItemListContainer(
+              title: 'Shopping List',
+              list: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemCount: _items.length,
+                separatorBuilder: (context, index) => const SizedBox(height: 10),
+                itemBuilder: (context, i) {
+                  if (i == _items.length - 1) {
+                    return Column(
+                      children: [
+                        ListItem(
+                          id: _items[i].id,
+                          name: _items[i].attributes.name,
+                          bought: _items[i].attributes.bought,
+                          deleteItem: () => deleteItem(_items[i].id),
+                        ),
+                        const SizedBox(height: 10.0),
+                      ],
+                    );
+                  }
+                  return ListItem(
+                    id: _items[i].id,
+                    name: _items[i].attributes.name,
+                    bought: _items[i].attributes.bought,
+                    deleteItem: () => deleteItem(_items[i].id),
+                  );
+                },
+              ),
+              button: AddItemButton(
+                label: Text(
+                  'Add new item',
+                  style: GoogleFonts.comfortaa(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                icon: const Icon(Icons.add),
+                onPressed: addItem,
               ),
             ),
-            icon: const Icon(Icons.add),
-            onPressed: addItem,
-          ),
+          ],
         ),
       ),
     );
