@@ -16,14 +16,6 @@ final _boughtStyle = TextStyle(
   decoration: TextDecoration.lineThrough,
 );
 
-final _inputDecoration = InputDecoration(
-  border: const OutlineInputBorder(),
-  focusColor: AppAssets.primaryColor,
-  focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: AppAssets.primaryColor, width: 2.0),
-  ),
-);
-
 class ListItem extends StatefulWidget {
   const ListItem({
     Key? key,
@@ -111,7 +103,7 @@ class _ListItemState extends State<ListItem> {
           children: [
             TextField(
               controller: _nameController,
-              decoration: _inputDecoration,
+              decoration: AppAssets.inputDecoration,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
