@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:marquee/marquee.dart';
 import 'package:shopping_list/api/api.client.dart';
 import 'package:shopping_list/utils/assets.util.dart';
 import 'package:shopping_list/widgets/modal.widget.dart';
@@ -179,10 +180,18 @@ class _ListItemState extends State<ListItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  _name,
-                  style: _bought ? _boughtStyle : _notBoughtStyle,
-                ),
+                _name.length < 35
+                    ? Text(
+                        _name,
+                        style: _bought ? _boughtStyle : _notBoughtStyle,
+                      )
+                    : SizedBox(
+                        width: width * 0.6,
+                        child: Marquee(
+                          text: _name,
+                          style: _bought ? _boughtStyle : _notBoughtStyle,
+                        ),
+                      ),
                 Checkbox(
                   fillColor: MaterialStateProperty.resolveWith((states) {
                     if (states.contains(MaterialState.selected)) {
