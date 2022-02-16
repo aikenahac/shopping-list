@@ -6,14 +6,14 @@ import 'package:shopping_list/widgets/modal.widget.dart';
 
 // Style for the items that are not bought
 // Plain black colored text
-final _notBoughtStyle = GoogleFonts.comfortaa(
+final _notBoughtStyle = GoogleFonts.inter(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
 );
 
 // Style for the items that are bought
 // Grayed out and line through text
-final _boughtStyle = GoogleFonts.comfortaa(
+final _boughtStyle = GoogleFonts.inter(
   fontSize: 16.0,
   fontWeight: FontWeight.w600,
   color: Colors.grey[600],

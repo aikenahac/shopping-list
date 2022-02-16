@@ -37,7 +37,7 @@ class _SLAppBarState extends State<SLAppBar> {
         padding: const EdgeInsets.all(20.0),
         child: Text(
           '$_familyName Family',
-          style: GoogleFonts.comfortaa(
+          style: GoogleFonts.inter(
             fontSize: 50,
             fontWeight: FontWeight.bold,
             color: Colors.white,

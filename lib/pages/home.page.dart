@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
               button: AddItemButton(
                 label: Text(
                   'Add new item',
-                  style: GoogleFonts.comfortaa(
+                  style: GoogleFonts.inter(
                     fontWeight: FontWeight.w600,
                   ),
                 ),

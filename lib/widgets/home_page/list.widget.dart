@@ -47,7 +47,7 @@ class ItemListContainer extends StatelessWidget {
             const SizedBox(height: 10.0),
             Text(
               title,
-              style: GoogleFonts.comfortaa(
+              style: GoogleFonts.inter(
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
               ),
