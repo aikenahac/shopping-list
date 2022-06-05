@@ -1,0 +1,32 @@
+workflows:
+  my-workflow:
+    name: ShoppingList
+    instance_type: mac_mini
+    max_build_duration: 60
+    environment:
+      groups:
+        - group_name
+      vars:
+      flutter: stable
+      xcode: latest
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+      cancel_previous_builds: false
+    scripts:
+      - ...
+    artifacts:
+      - build/**/outputs/bundle/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - name@example.com
+      scripts:
+        - echo 'Post-publish script'
